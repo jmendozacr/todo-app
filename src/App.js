@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 import Form from './components/Form/Form';
 import Header from './components/Header/Header';
+import TaskList from './components/TaskList/TaskList';
 
 const App = () => {
     const [tasks, setTasks] = useState([
@@ -23,12 +24,13 @@ const App = () => {
         }
     ]);
 
-    console.log("tasks", tasks);
+    // console.log("tasks", tasks);
 
     return (
         <div className="container">
             <Header/>
             <Form tasks={tasks} setTasks={setTasks}/>
+            <TaskList tasks={tasks}/>
         </div>
     );
 }

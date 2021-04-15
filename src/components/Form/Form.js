@@ -18,6 +18,8 @@ const Form = ({ tasks, setTasks }) => {
                 complete: false
             }
         ])
+
+        setValue("");
     }
 
     const handleChange = (e) => {
