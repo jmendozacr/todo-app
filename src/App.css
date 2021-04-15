@@ -51,7 +51,7 @@
 	margin-left: 10px;
 }
 
-/* * --- --- ---  FORMULARIO AGREGAR --- --- --- */
+/* * --- --- ---  ADD TASK FORM --- --- --- */
 .task-form {
 	display: flex;
 	justify-content: space-between;
@@ -89,7 +89,7 @@
 	color: var(--green);
 }
 
-/* * --- --- ---  LISTA TAREAS --- --- --- */
+/* * --- --- ---  TASK LIST --- --- --- */
 
 .list {
 	list-style: none;
@@ -147,12 +147,12 @@
 	padding: 40px 20px;
 }
 
-/* * --- --- ---  FORMULARIO EDITAR TAREA --- --- --- */
-.formulario-editar-tarea {
+/* * --- --- ---  FORM EDIT TASK --- --- --- */
+.form-edit-task {
 	display: flex;
 }
 
-.formulario-editar-tarea__input {
+.form-edit-task__input {
 	width: 100%;
 	border: none;
 	border-bottom: 2px solid #b8b8b8;
@@ -162,7 +162,7 @@
 	margin-right: 20px;
 }
 
-.formulario-editar-tarea__btn {
+.form-edit-task__btn {
 	border: none;
 	background: var(--green);
 	cursor: pointer;
