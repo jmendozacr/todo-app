@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckSquare, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons'
+import {  faSquare, faCheckSquare, faEdit, faTimes } from '@fortawesome/free-solid-svg-icons'
 
-const Task = ({ item }) => {
+const Task = ({ item, updateTask, toggleComplete, removeTask }) => {
     const [editingTask, setEditingTask] = useState(false);
     const [newTask, setNewTask] = useState(item.text);
 
@@ -16,7 +16,8 @@ const Task = ({ item }) => {
         <li className="list__task">
             <FontAwesomeIcon 
                 className="list__icon list__icon-check"
-                icon={faCheckSquare}
+                icon={item.complete ? faCheckSquare : faSquare}
+                onClick={() => toggleComplete(item.id)}
             />
             <div className="list__text">
                 {
@@ -28,7 +29,7 @@ const Task = ({ item }) => {
                             value={newTask}
                             onChange={(e) => setNewTask(e.target.value)}
                         />
-                        <button type="submit" className="form-edit-task__btn">Update</button>
+                        <button onClick={() => updateTask(item.id, newTask)} type="submit" className="form-edit-task__btn">Update</button>
                     </form>
                     : item.text
                 }
@@ -42,6 +43,7 @@ const Task = ({ item }) => {
                 <FontAwesomeIcon 
                     className="list__icon list__icon-action"
                     icon={faTimes}
+                    onClick={() => removeTask(item.id)}
                 />
             </div>
         </li>
@@ -50,6 +52,9 @@ const Task = ({ item }) => {
 
 Task.propTypes = {
     item: PropTypes.object,
+    updateTask: PropTypes.func,
+    toggleComplete: PropTypes.func,
+    removeTask: PropTypes.func,
 }
 
 export default Task;

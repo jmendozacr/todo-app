@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import TaskList from './components/TaskList/TaskList';
 
 const App = () => {
+    const [showComplete, setShowComplete] = useState(true);
     const [tasks, setTasks] = useState([
         {
             id: uuidv4(),
@@ -24,13 +25,21 @@ const App = () => {
         }
     ]);
 
-    // console.log("tasks", tasks);
-
     return (
         <div className="container">
-            <Header/>
-            <Form tasks={tasks} setTasks={setTasks}/>
-            <TaskList tasks={tasks}/>
+            <Header 
+                showComplete={showComplete}
+                setShowComplete={setShowComplete}
+            />
+            <Form 
+                tasks={tasks}
+                setTasks={setTasks}
+            />
+            <TaskList 
+                showComplete={showComplete}
+                tasks={tasks}
+                setTasks={setTasks}
+            />
         </div>
     );
 }
