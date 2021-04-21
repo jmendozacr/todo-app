@@ -10,6 +10,7 @@ const Task = ({ item, updateTask, toggleComplete, removeTask }) => {
     const handleSubmitTask = (e) => {
         e.preventDefault();
         setEditingTask(false);
+        updateTask(item.id, newTask);
     }
 
     return (
@@ -29,7 +30,7 @@ const Task = ({ item, updateTask, toggleComplete, removeTask }) => {
                             value={newTask}
                             onChange={(e) => setNewTask(e.target.value)}
                         />
-                        <button onClick={() => updateTask(item.id, newTask)} type="submit" className="form-edit-task__btn">Update</button>
+                        <button type="submit" className="form-edit-task__btn">Update</button>
                     </form>
                     : item.text
                 }

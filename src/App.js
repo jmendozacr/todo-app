@@ -1,29 +1,23 @@
-import React, { useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Form from './components/Form/Form';
 import Header from './components/Header/Header';
 import TaskList from './components/TaskList/TaskList';
 
 const App = () => {
-    const [showComplete, setShowComplete] = useState(true);
-    const [tasks, setTasks] = useState([
-        {
-            id: uuidv4(),
-            text: "go to the store",
-            complete: false
-        },
-        {
-            id: uuidv4(),
-            text: "go to the work",
-            complete: false
-        },
-        {
-            id: uuidv4(),
-            text: "do my homework",
-            complete: true
-        }
-    ]);
+    // get tasks from localstorage
+    const savedTasks = localStorage.getItem("tasks") ? JSON.parse(localStorage.getItem("tasks")) : [];
+    const [tasks, setTasks] = useState(savedTasks);
+
+    useEffect(() => {
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }, [tasks]);
+
+    const getShowComplete = localStorage.getItem("showComplete") ? JSON.parse(localStorage.getItem("showComplete")) : true;
+    const [showComplete, setShowComplete] = useState(getShowComplete);
+    useEffect(() => {
+        localStorage.setItem("showComplete", showComplete.toString());
+    }, [showComplete])
 
     return (
         <div className="container">
